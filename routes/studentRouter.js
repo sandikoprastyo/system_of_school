@@ -1,24 +1,21 @@
 // studentRouter.js
 const express = require('express');
 const router = express.Router();
+const studentsController = require('../controllers/studentController');
 
-// Contoh rute untuk mendapatkan semua siswa
-router.get('/', (req, res) => {
-    res.send('Daftar semua siswa');
-});
+// Rute untuk mendapatkan semua siswa
+router.get('/', studentsController.getAllStudents);
 
-// Contoh rute untuk menambahkan siswa baru
-router.post('/', (req, res) => {
-    const newStudent = req.body; // Misalnya Anda mengirimkan data siswa dalam body
-    // Logika untuk menyimpan siswa baru
-    res.status(201).send('Siswa baru ditambahkan');
-});
+// Rute untuk menambahkan siswa baru
+router.post('/', studentsController.addStudent);
 
-// Contoh rute untuk mendapatkan siswa berdasarkan ID
-router.get('/:id', (req, res) => {
-    const studentId = req.params.id;
-    // Logika untuk mendapatkan siswa berdasarkan ID
-    res.send(`Detail siswa dengan ID ${studentId}`);
-});
+// Rute untuk mendapatkan siswa berdasarkan ID
+router.get('/:id', studentsController.getStudentById);
+
+// Rute untuk memperbarui siswa berdasarkan ID
+router.put('/:id', studentsController.updateStudent);
+
+// Rute untuk menghapus siswa berdasarkan ID
+router.delete('/:id', studentsController.deleteStudent);
 
 module.exports = router;

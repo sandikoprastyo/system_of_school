@@ -1,24 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const teachersController = require('../controllers/teachersController');
 
-router.get('/', (req, res) => {
-  res.send('Teachers Page');
-});
+// Route untuk mendapatkan semua teacher
+router.get('/', teachersController.getAllTeachers);
 
-router.post('/', (req, res) => {
-  res.send('Create Teacher');
-});
+// Route untuk menambahkan teacher baru
+router.post('/', teachersController.addTeacher);
 
-router.get('/:id', (req, res) => {
-  res.send(`Teacher with ID ${req.params.id}`);
-});
+// Route untuk mendapatkan teacher berdasarkan ID
+router.get('/:id', teachersController.getTeacherById);
 
-router.put('/:id', (req, res) => {
-  res.send(`Update Teacher with ID ${req.params.id}`);
-});
+// Route untuk memperbarui teacher berdasarkan ID
+router.put('/:id', teachersController.updateTeacher);
 
-router.delete('/:id', (req, res) => {
-  res.send(`Delete Teacher with ID ${req.params.id}`);
-});
+// Route untuk menghapus teacher berdasarkan ID
+router.delete('/:id', teachersController.deleteTeacher);
 
 module.exports = router;

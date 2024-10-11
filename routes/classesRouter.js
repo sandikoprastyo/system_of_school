@@ -1,24 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const classesController = require('../controllers/classesController');
 
-router.get('/', (req, res) => {
-  res.send('Classes Page');
-});
+// Rute untuk mendapatkan semua siswa
+router.get('/', classesController.getAllClasses);
 
-router.post('/', (req, res) => {
-  res.send('Create Class');
-});
+// Rute untuk menambahkan siswa baru
+router.post('/', classesController.addClass);
 
-router.get('/:id', (req, res) => {
-  res.send(`Class with ID ${req.params.id}`);
-});
+// Rute untuk mendapatkan siswa berdasarkan ID
+router.get('/:id', classesController.getClassById);
 
-router.put('/:id', (req, res) => {
-  res.send(`Update Class with ID ${req.params.id}`);
-});
+// Rute untuk memperbarui siswa berdasarkan ID
+router.put('/:id', classesController.updateClass);
 
-router.delete('/:id', (req, res) => {
-  res.send(`Delete Class with ID ${req.params.id}`);
-});
+// Rute untuk menghapus siswa berdasarkan ID
+router.delete('/:id', classesController.deleteClass);
 
 module.exports = router;

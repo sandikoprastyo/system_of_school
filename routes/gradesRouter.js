@@ -1,24 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const gradesController = require('../controllers/gradesController');
 
-router.get('/', (req, res) => {
-  res.send('Grades Page');
-});
+// Route untuk mendapatkan semua grade
+router.get('/', gradesController.getAllGrades);
 
-router.post('/', (req, res) => {
-  res.send('Create Grade');
-});
+// Route untuk menambahkan grade baru
+router.post('/', gradesController.addGrade);
 
-router.get('/:id', (req, res) => {
-  res.send(`Grade with ID ${req.params.id}`);
-});
+// Route untuk mendapatkan grade berdasarkan ID
+router.get('/:id', gradesController.getGradeById);
 
-router.put('/:id', (req, res) => {
-  res.send(`Update Grade with ID ${req.params.id}`);
-});
+// Route untuk memperbarui grade berdasarkan ID
+router.put('/:id', gradesController.updateGrade);
 
-router.delete('/:id', (req, res) => {
-  res.send(`Delete Grade with ID ${req.params.id}`);
-});
+// Route untuk menghapus grade berdasarkan ID
+router.delete('/:id', gradesController.deleteGrade);
 
 module.exports = router;

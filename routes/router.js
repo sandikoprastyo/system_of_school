@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authenticate = require('../middleware/authenticate');
 
 // Import semua router
 const studentsRouter = require('./studentRouter');
@@ -12,14 +13,14 @@ const examsRouter = require('./examsRouter');
 const schedulesRouter = require('./schedulesRouter');
 
 // Gunakan router sesuai endpoint
-router.use('/students', studentsRouter);
-router.use('/teachers', teachersRouter);
-router.use('/courses', coursesRouter);
-router.use('/classes', classesRouter);
-router.use('/grades', gradesRouter);
-router.use('/exams', examsRouter);
-router.use('/attendances', attendancesRouter);
-router.use('/schedules', schedulesRouter)
+router.use('/students', authenticate, studentsRouter);
+router.use('/teachers', authenticate, teachersRouter);
+router.use('/courses', authenticate, coursesRouter);
+router.use('/classes', authenticate, classesRouter);
+router.use('/grades', authenticate, gradesRouter);
+router.use('/exams', authenticate, examsRouter);
+router.use('/attendances', authenticate, attendancesRouter);
+router.use('/schedules', authenticate, schedulesRouter)
 
 
 module.exports = router;

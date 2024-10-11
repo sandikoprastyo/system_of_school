@@ -1,24 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const schedulesController = require('../controllers/schedulesController');
 
-router.get('/', (req, res) => {
-  res.send('Schedules Page');
-});
+// Route untuk mendapatkan semua schedule
+router.get('/', schedulesController.getAllSchedules);
 
-router.post('/', (req, res) => {
-  res.send('Create Schedule');
-});
+// Route untuk menambahkan schedule baru
+router.post('/', schedulesController.addSchedule);
 
-router.get('/:id', (req, res) => {
-  res.send(`Schedule with ID ${req.params.id}`);
-});
+// Route untuk mendapatkan schedule berdasarkan ID
+router.get('/:id', schedulesController.getScheduleById);
 
-router.put('/:id', (req, res) => {
-  res.send(`Update Schedule with ID ${req.params.id}`);
-});
+// Route untuk memperbarui schedule berdasarkan ID
+router.put('/:id', schedulesController.updateSchedule);
 
-router.delete('/:id', (req, res) => {
-  res.send(`Delete Schedule with ID ${req.params.id}`);
-});
+// Route untuk menghapus schedule berdasarkan ID
+router.delete('/:id', schedulesController.deleteSchedule);
 
 module.exports = router;

@@ -1,24 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const courseController = require('../controllers/courseController');
 
-router.get('/', (req, res) => {
-  res.send('Courses Page');
-});
+// Rute untuk mendapatkan semua course
+router.get('/', courseController.getAllCourses);
 
-router.post('/', (req, res) => {
-  res.send('Create Course');
-});
+// Rute untuk menambahkan course baru
+router.post('/', courseController.addCourse);
 
-router.get('/:id', (req, res) => {
-  res.send(`Course with ID ${req.params.id}`);
-});
+// Rute untuk mendapatkan course berdasarkan ID
+router.get('/:id', courseController.getCourseById);
 
-router.put('/:id', (req, res) => {
-  res.send(`Update Course with ID ${req.params.id}`);
-});
+// Rute untuk memperbarui course berdasarkan ID
+router.put('/:id', courseController.updateCourse);
 
-router.delete('/:id', (req, res) => {
-  res.send(`Delete Course with ID ${req.params.id}`);
-});
+// Rute untuk menghapus course berdasarkan ID
+router.delete('/:id', courseController.deleteCourse);
 
 module.exports = router;

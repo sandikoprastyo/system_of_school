@@ -1,24 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const examsController = require('../controllers/examsController');
 
-router.get('/', (req, res) => {
-  res.send('Exams Page');
-});
+// Route untuk mendapatkan semua exam
+router.get('/', examsController.getAllExams);
 
-router.post('/', (req, res) => {
-  res.send('Create Exam');
-});
+// Route untuk menambahkan exam baru
+router.post('/', examsController.addExam);
 
-router.get('/:id', (req, res) => {
-  res.send(`Exam with ID ${req.params.id}`);
-});
+// Route untuk mendapatkan exam berdasarkan ID
+router.get('/:id', examsController.getExamById);
 
-router.put('/:id', (req, res) => {
-  res.send(`Update Exam with ID ${req.params.id}`);
-});
+// Route untuk memperbarui exam berdasarkan ID
+router.put('/:id', examsController.updateExam);
 
-router.delete('/:id', (req, res) => {
-  res.send(`Delete Exam with ID ${req.params.id}`);
-});
+// Route untuk menghapus exam berdasarkan ID
+router.delete('/:id', examsController.deleteExam);
 
 module.exports = router;

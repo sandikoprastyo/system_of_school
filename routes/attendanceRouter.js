@@ -1,25 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const attendanceController = require('../controllers/attendanceController');
 
-router.get('/', (req, res) => {
-  res.send('Attendance Page');
-});
+// Rute untuk mendapatkan semua siswa
+router.get('/', attendanceController.getAllAttendances);
 
-router.post('/', (req, res) => {
-  res.send('Create Attendance');
-});
+// Rute untuk menambahkan siswa baru
+router.post('/', attendanceController.addAttendance);
 
-router.get('/:id', (req, res) => {
-  res.send(`Attendance with ID ${req.params.id}`);
-});
+// Rute untuk mendapatkan siswa berdasarkan ID
+router.get('/:id', attendanceController.getAttendanceById);
 
-router.put('/:id', (req, res) => {
-  res.send(`Update Attendance with ID ${req.params.id}`);
-});
+// Rute untuk memperbarui siswa berdasarkan ID
+router.put('/:id', attendanceController.updateAttendance);
 
-router.delete('/:id', (req, res) => {
-  res.send(`Delete Attendance with ID ${req.params.id}`);
-});
+// Rute untuk menghapus siswa berdasarkan ID
+router.delete('/:id', attendanceController.deleteAttendance);
 
 module.exports = router;
-
