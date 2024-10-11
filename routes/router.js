@@ -11,6 +11,10 @@ const gradesRouter = require('./gradesRouter');
 const attendancesRouter = require('./attendanceRouter');
 const examsRouter = require('./examsRouter');
 const schedulesRouter = require('./schedulesRouter');
+const authRouter = require('./authRouter');
+
+//auth
+router.use('/auth', authRouter);
 
 // Gunakan router sesuai endpoint
 router.use('/students', authenticate, studentsRouter);
